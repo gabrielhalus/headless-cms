@@ -13,6 +13,7 @@ services:
       - backend
     networks:
       - app
+    restart: always
 
   backend:
     build:
@@ -27,6 +28,7 @@ services:
       - postgres
     networks:
       - app
+    restart: always
 
   postgres:
     image: postgres
@@ -41,6 +43,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
     networks:
       - app
+    restart: always
 
   nginx:
     image: nginx
@@ -54,6 +57,7 @@ services:
       - backend
     networks:
       - app
+    restart: always
 
 networks:
   app:
