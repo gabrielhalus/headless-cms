@@ -29,7 +29,7 @@ services:
       - app
 
   postgres:
-    image: portgres
+    image: postgres
     environment:
       POSTGRES_PASSWORD: ${DB_PASSWORD}
       POSTGRES_USER: ${DB_USER}
@@ -49,6 +49,9 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/cms.gabrielhalus.com.conf:/etc/nginx/conf.d/cms.gabrielhalus.com.conf:ro
+    depends_on:
+      - frontend
+      - backend
     networks:
       - app
 
